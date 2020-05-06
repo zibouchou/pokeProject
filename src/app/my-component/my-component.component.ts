@@ -10,6 +10,7 @@ export class MyComponentComponent implements OnInit {
 
   id : String;
   selectedPokeId: String;
+  searchPokeName =  '';
 
   pokes : Pokemon[] = [];
   constructor() {
