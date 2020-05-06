@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from '../pokemon';
 
 @Component({
   selector: 'app-my-component',
@@ -8,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class MyComponentComponent implements OnInit {
 
   id : String;
-  constructor() { }
+  selectedPokeId: String;
+
+  pokes : Pokemon[] = [];
+  constructor() {
+    this.pokes.push(new Pokemon('1', 'pikachu'));
+    this.pokes.push(new Pokemon('2', 'bulbasaur'));
+    this.pokes.push(new Pokemon('3', 'ivysaur'));
+    this.pokes.push(new Pokemon('4', 'venusaur'));
+    this.pokes.push(new Pokemon('5', 'charmender'));
+
+   }
 
   ngOnInit(): void {
   }
