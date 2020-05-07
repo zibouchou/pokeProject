@@ -6,17 +6,18 @@ import { PokeShareInfoService } from '../poke-share-info.service';
   selector: 'app-pokedetail',
   templateUrl: './pokedetail.component.html',
   styleUrls: ['./pokedetail.component.css'],
-  providers: [PokeShareInfoService]
+  providers: []
 })
 export class PokedetailComponent implements OnInit {
 
   @Input('detail')
   detail : PokeDetail;
 
-  constructor(private pokeShareService: PokeShareInfoService) { }
+  constructor(private pokeShareService: PokeShareInfoService) { 
+    this.pokeShareService.getObservable().subscribe(e => console.log('e' + e));
+  }
 
   ngOnInit(): void {
-    console.log(this.pokeShareService.getValue());
   }
 
 }
