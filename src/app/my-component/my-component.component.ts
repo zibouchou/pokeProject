@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../pokemon';
+import { Pokemon, PokeDetail } from '../pokemon';
 import { PokeAPIServicesService } from '../poke-apiservices.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class MyComponentComponent implements OnInit {
   id : String;
   selectedPokeId: String;
   searchPokeName =  '';
+  pokeDetail: PokeDetail;
 
   pokes : Pokemon[] = [];
   constructor( private pokeAPIService: PokeAPIServicesService ) {
@@ -29,7 +30,10 @@ export class MyComponentComponent implements OnInit {
   }
 
   go(){
-    console.log(this.selectedPokeId);
+    if (this.selectedPokeId != ''){
+      this.pokeAPIService.getPokemonsInfo(this.selectedPokeId).subscribe(data => this.pokeDetail = data);
+    }
+
   }
 
 }
